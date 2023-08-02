@@ -19,22 +19,14 @@ int binary_tree_balance(const binary_tree_t *tree)
  */
 size_t binary_tree_height(const binary_tree_t *tree)
 {
-	if (!tree)
-		return (0);
-	return (get_height(tree));
-}
-
-/**
- * get_height - recursive method to calculate the height of the tree
- * @tree: head node of the tree
- * Return: the height of the tree
- */
-size_t get_height(const binary_tree_t *tree)
-{
 	size_t lh;
-	size_t rh;
-
-	rh = tree->right ? 1 + binary_tree_height(tree->right) : 0;
-	lh = tree->left ? 1 + binary_tree_height(tree->left) : 0;
-	return (lh > rh ? lh : rh);
+        size_t rh;
+	
+	if (tree)
+	{
+		rh = tree->right ? 1 + binary_tree_height(tree->right) : 0;
+		lh = tree->left ? 1 + binary_tree_height(tree->left) : 0;
+		return (lh > rh ? 1 : rh);
+	}
+	return (0);
 }
